@@ -1,7 +1,7 @@
 deepface
 matplotlib
-opencv_python
-opencv_python_headless
+opencv-python
+opencv-python-headless
 pandas
 pytube
 streamlit
