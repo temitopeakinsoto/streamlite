@@ -8,10 +8,10 @@ WORKDIR /app
 COPY requirements.txt ./requirements.txt
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8501
+EXPOSE 8080
 
 COPY . /app
 
@@ -19,4 +19,4 @@ COPY . /app
 # ENV APP_LOG_LEVEL "ERROR"
 
 # Run your Python application
-CMD ["app.py"]
+CMD streamlit run --server.port 8080 --server.enableCORS false app.py
