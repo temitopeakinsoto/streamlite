@@ -1,2 +1,2 @@
 runtime: python39 # Change this to your desired runtime
-entrypoint: gunicorn -b :8080 your_app_module:app # Change 'your_app_module' to your actual app module
+entrypoint: gunicorn -b :8080 app:app # Change 'your_app_module' to your actual app module
