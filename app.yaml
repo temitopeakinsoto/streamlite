@@ -1,2 +1,10 @@
-runtime: python39 # Change this to your desired runtime
-entrypoint: gunicorn -b :8080 app:app # Change 'your_app_module' to your actual app module
+runtime: python
+env: flex
+
+runtime_config:
+  python_version: 3
+
+entrypoint: streamlit run streamlit-app.py --server.port $PORT
+
+automatic_scaling:
+  max_num_instances: 1
