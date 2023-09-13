@@ -8,17 +8,21 @@ WORKDIR /app
 COPY requirements.txt ./requirements.txt
 
 # Install any needed packages specified in requirements.txt
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
 COPY . /app
 
+
+
 # Define environment variable
 # ENV APP_LOG_LEVEL "ERROR"
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
 
 # Run your Python application
-CMD streamlit run --server.port 8080 --server.enableCORS false app.py
+CMD streamlit run app.py --server.port 8080 --server.enableCORS false 
