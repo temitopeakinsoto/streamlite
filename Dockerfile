@@ -17,6 +17,8 @@ COPY . /app
 
 # Define environment variable
 # ENV APP_LOG_LEVEL "ERROR"
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
 
 # Run your Python application
 CMD streamlit run --server.port 8080 --server.enableCORS false app.py
