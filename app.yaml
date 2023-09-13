@@ -2,4 +2,6 @@ runtime: custom
 env: flex
 readiness_check:
   path: "/app" # Specify the path to check readiness
-  timeout_sec: 300 # Increase the timeout to 300 seconds or more
+  check_interval_sec: 5 # Set the check interval to 5 seconds
+  timeout_sec: 3 # Set the timeout to 3 seconds or any value smaller than or equal to check_interval_sec
+
