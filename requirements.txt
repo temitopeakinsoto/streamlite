@@ -1,7 +1,7 @@
 deepface
 matplotlib
-//opencv-python
-//opencv-python-headless
+#opencv-python
+#opencv-python-headless
 opencv-python-headless==4.5.4.60
 pandas
 pytube
