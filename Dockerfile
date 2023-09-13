@@ -7,11 +7,6 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY requirements.txt ./requirements.txt
 
-# Remove the virtual environment (if used)
-rm -rf /home/adminuser/venv
-
-# Remove cached files
-rm -rf ~/.cache/pip
 
 
 
