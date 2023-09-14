@@ -6,6 +6,3 @@ opencv-python-headless==4.5.4.60
 pandas
 pytube
 streamlit
-dlib==19.24.2
-debugpy
-numpy
