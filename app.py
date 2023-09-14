@@ -9,6 +9,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 # import pygwalker as pyg
 import json
+from streamlit_webrtc import webrtc_streamer, VideoProcessorBase
 
 # Create a sidebar with navigation links
 page_selection = st.sidebar.selectbox("Select a page", ["Participant Information", "Consent Form", "App Page", "Questionnaire" ])
@@ -18,6 +19,24 @@ questionnaire_data_list = []
 questionnaire_data = './database/questionnaire_data.json'
 consent_data = './database/consent_data.json'
 
+##
+
+from streamlit_webrtc import webrtc_streamer
+
+def main():
+    st.title("Camera Access Example")
+
+    webrtc_ctx = webrtc_streamer(
+        key="camera-example",
+        video=True,  # Enable video feed
+        audio=False,  # Disable audio feed
+        async_processing=False,  # You can set this to True if you want to process frames asynchronously
+    )
+
+    if not webrtc_ctx.state.playing:
+        st.warning("Please grant camera permissions.")
+
+  ##  
 
 def consent():
     global consent_data_list
