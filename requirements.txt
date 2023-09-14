@@ -1,8 +1,8 @@
 deepface
 matplotlib
-opencv-python
+opencv_python
 #opencv-python-headless
-##opencv-python-headless==4.5.4.60
+opencv-python-headless==4.5.4.60
 pandas
 pytube
 streamlit
