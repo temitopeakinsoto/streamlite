@@ -371,7 +371,9 @@ def apppage():
         ret, frame = video_capture.read()
 
         # Resize the frame by the specified scaling factor
-        height, width = frame.shape[:2]
+        if frame is not None:
+            height, width = frame.shape[:2]
+        
         new_width = int(width * scaling_factor)
         new_height = int(height * scaling_factor)
         resized_frame = cv2.resize(frame, (new_width, new_height))
