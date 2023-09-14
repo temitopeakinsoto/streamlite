@@ -374,37 +374,37 @@ def apppage():
         if frame is not None:
             height, width = frame.shape[:2]
         
-        new_width = int(width * scaling_factor)
-        new_height = int(height * scaling_factor)
-        resized_frame = cv2.resize(frame, (new_width, new_height))
+            new_width = int(width * scaling_factor)
+            new_height = int(height * scaling_factor)
+            resized_frame = cv2.resize(frame, (new_width, new_height))
 
-        result = DeepFace.analyze(img_path=resized_frame, actions=['emotion'], enforce_detection=False)
+            result = DeepFace.analyze(img_path=resized_frame, actions=['emotion'], enforce_detection=False)
 
-        # Convert video stream to gray
-        gray_video = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2GRAY)
-        faces = haar_cascade.detectMultiScale(gray_video, 1.1, 4)
+            # Convert video stream to gray
+            gray_video = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2GRAY)
+            faces = haar_cascade.detectMultiScale(gray_video, 1.1, 4)
 
-        # Loop through points numpy array in faces and construct a facial rectangle
-        for (x, y, w, h) in faces:
-            cv2.rectangle(resized_frame, (x, y), (x + w, y + h), (255, 0, 0), 3)
+            # Loop through points numpy array in faces and construct a facial rectangle
+            for (x, y, w, h) in faces:
+                cv2.rectangle(resized_frame, (x, y), (x + w, y + h), (255, 0, 0), 3)
 
-        # Extract dominant emotion and timestamp
-        emotion = result[0]['dominant_emotion']
-        timestamp = time.time()
-        txt = f"{emotion} (Timestamp: {timestamp:.2f})"
+            # Extract dominant emotion and timestamp
+            emotion = result[0]['dominant_emotion']
+            timestamp = time.time()
+            txt = f"{emotion} (Timestamp: {timestamp:.2f})"
 
-        # Append emotion and timestamp to the lists
+            # Append emotion and timestamp to the lists
 
-        emotion_timestamps.append(timestamp)
-        emotion_values.append(emotion)
-        data = {'Timestamp': emotion_timestamps, 'Emotion': emotion_values}
-        df = pd.DataFrame(data)
-        df.to_csv('emotion_data.csv', index=False)
+            emotion_timestamps.append(timestamp)
+            emotion_values.append(emotion)
+            data = {'Timestamp': emotion_timestamps, 'Emotion': emotion_values}
+            df = pd.DataFrame(data)
+            df.to_csv('emotion_data.csv', index=False)
 
-        cv2.putText(resized_frame, txt, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+            cv2.putText(resized_frame, txt, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
-        # Display the frame with emotion using Streamlit in the empty space
-        video_display.image(resized_frame, channels="BGR", use_column_width=True)
+            # Display the frame with emotion using Streamlit in the empty space
+            video_display.image(resized_frame, channels="BGR", use_column_width=True)
 
     # Release the webcam when the checkbox is unchecked
     if not analysis_checkbox:
