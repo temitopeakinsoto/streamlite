@@ -1,8 +1,8 @@
-deepface
-matplotlib
-opencv_python
-#opencv-python-headless
+python
+streamlit==0.85.1
 opencv-python-headless==4.5.4.60
-pandas
-pytube
-streamlit
+deepface==0.0.68
+pytube3==11.0.0
+pandas==1.3.3
+matplotlib==3.4.3
+youtube_dl==2021.6.6
