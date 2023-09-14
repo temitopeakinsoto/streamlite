@@ -18,12 +18,6 @@ COPY . /app
 
 
 
-# Remove the virtual environment (if used)
-rm -rf /home/adminuser/venv
-
-# Remove cached files
-rm -rf ~/.cache/pip
-
 
 
 # Define environment variable
