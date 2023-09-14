@@ -8,11 +8,6 @@ WORKDIR /app
 COPY requirements.txt ./requirements.txt
 
 
-rm -rf /home/adminuser/venv
-rm -rf ~/.cache/pip
-
-
-
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
