@@ -9,6 +9,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 # import pygwalker as pyg
 import json
+import uuid
 
 # Create a sidebar with navigation links
 page_selection = st.sidebar.selectbox("Select a page", ["Participant Information", "Consent Form", "App Page", "Questionnaire" ])
@@ -17,7 +18,7 @@ consent_data_list = []
 questionnaire_data_list = []
 questionnaire_data = './database/questionnaire_data.json'
 consent_data = './database/consent_data.json'
-
+unique_id = str(uuid.uuid4())
 
 def consent():
     global consent_data_list
@@ -87,6 +88,7 @@ def consent():
             return
         # Save data to a JSON file
         consent_form_data = {
+            "ID": unique_id,
             "Full Name ": name,
             "Contact Details (postal or email address)": contact_details,
             "Consent Questions": {
@@ -293,6 +295,7 @@ def questionnaire():
             return
         # You can save or process the user's responses here
         response_data = {
+            "ID": unique_id,
             "Age": age,
             "Gender": gender,
             "Ethnicity/Race": ethnicity,
