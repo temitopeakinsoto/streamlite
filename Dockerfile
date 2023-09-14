@@ -18,6 +18,14 @@ COPY . /app
 
 
 
+# Remove the virtual environment (if used)
+rm -rf /home/adminuser/venv
+
+# Remove cached files
+rm -rf ~/.cache/pip
+
+
+
 # Define environment variable
 # ENV APP_LOG_LEVEL "ERROR"
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
