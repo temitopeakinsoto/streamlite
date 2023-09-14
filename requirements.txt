@@ -6,3 +6,4 @@ pytube3
 pandas
 matplotlib
 youtube_dl
+streamlit_webrtc
