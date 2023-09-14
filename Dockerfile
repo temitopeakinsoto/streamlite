@@ -28,4 +28,4 @@ RUN apt-get update && apt-get install -y libgl1-mesa-glx
 
 
 # Run your Python application
-CMD streamlit run app.py --server.port 8080 --server.enableCORS false 
+CMD streamlit run app.py --server.port 8080 
