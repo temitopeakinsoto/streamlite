@@ -12,13 +12,18 @@ import json
 import uuid
 
 # Create a sidebar with navigation links
-page_selection = st.sidebar.selectbox("Select a page", ["Participant Information", "Consent Form", "App Page", "Questionnaire" ])
+st.sidebar.title("Navigation")
+page_selection = st.sidebar.radio("", ["Participant Information", "Consent Form", "App Page", "Questionnaire" ])
 
 consent_data_list = []
 questionnaire_data_list = []
 questionnaire_data = './database/questionnaire_data.json'
 consent_data = './database/consent_data.json'
 unique_id = str(uuid.uuid4())
+
+if 'session_state' not in st.session_state:
+    st.session_state.session_state = {}
+    st.session_state.session_state['unique_id'] = str(uuid.uuid4())
 
 def consent():
     global consent_data_list
@@ -40,11 +45,6 @@ def consent():
     ## 2. The UH protocol number:
     SPECS/PGT/UH/05457
     """)
-
-    # st.markdown("""
-    # ## 7. What Will Happen to Me If I Take Part?
-    # The first thing to happen will be a short video clip, not longer than 5 minutes, which will be played for you to watch. The purpose of the video is to elicit emotions of joy, laughter, etc. While this video is being watched, the emotion recognition system will collect and analyze facial expression data through your computer’s webcam. The different facial expressions predicted by the app will be visible for you to see and decide if it matches the actual facial expression/emotion shown by you. After the completion of this session, you are free to exit the study as your involvement in the study would have been completed. A questionnaire will be used to capture your feedback about using the emotion recognition app.
-    # """)
 
     # Consent Questions
     st.header("Consent Questions")
@@ -68,7 +68,7 @@ def consent():
 
     # Display the PI's contact information
     st.text("Contact Information of Principal Investigator:")
-    st.text("TEMITOPE SAMSON AKINSOTO")
+    st.text("TEMITOPE SAMSON AKINSOTO (ta22acf@herts.ac.uk)")
 
     # Disclaimer
     st.write("By submitting this form, you acknowledge that you have read and understood the information provided.")
@@ -88,7 +88,7 @@ def consent():
             return
         # Save data to a JSON file
         consent_form_data = {
-            "ID": unique_id,
+            "ID": st.session_state.session_state['unique_id'],
             "Full Name ": name,
             "Contact Details (postal or email address)": contact_details,
             "Consent Questions": {
@@ -128,6 +128,7 @@ def consent():
         # Display a success message
         st.success("Consent Form Submitted Successfully!")
         st.info("Proceed to App Page in the Navigation Menu")
+
 
 def participant():
 
@@ -295,7 +296,7 @@ def questionnaire():
             return
         # You can save or process the user's responses here
         response_data = {
-            "ID": unique_id,
+            "ID": st.session_state.session_state['unique_id'],
             "Age": age,
             "Gender": gender,
             "Ethnicity/Race": ethnicity,
@@ -342,9 +343,6 @@ def apppage():
     video_capture = cv2.VideoCapture(0)
 
     haar_cascade = cv2.CascadeClassifier('./classifier/haar_face.xml')
-
-    # Emotion timeline data structure
-    emotion_timeline = []
 
     # Create lists to store timestamps and emotions
     emotion_timestamps = []
@@ -435,7 +433,6 @@ def apppage():
 
         # Display the Matplotlib figure using Streamlit
         st.pyplot(fig)
-        # walker = pyg.walk(df)
         
 
 # Call the selected page function
