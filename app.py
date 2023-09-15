@@ -256,10 +256,11 @@ def questionnaire():
     gender = st.selectbox("Please tell us your gender:", ["", "Male", "Female", "Non-binary/Other", "Prefer not to say"])
 
     # Ethnicity/Race
-    ethnicity = st.selectbox("What is your Ethnicity/Race:", ["", "White", "Black", "Asian", "Others"])
+    ethnicity = st.selectbox("What is your Ethnicity/Race:", ["English", "Welsh", "Scottish", "Northern Irish" , "British Irish","Indian", "Indian British", "Chinese", "Chinese British", "Any other Asian", "Caribbean","African", "Black British", "Any other Black", "Asian", "Others"])
 
     # Frequency of e-learning activities
-    frequency = st.selectbox("How often do you engage in e-learning activities via online platforms?", ["", "Daily", "Weekly", "Monthly", "Rarely", "Never"])
+    frequency = st.selectbox("How often do you engage in e-learning activities via online platforms?", ["Never", "Daily", "Weekly", "Monthly", "Rarely", "Never"])
+    learningPreference = st.selectbox("What is your preferred model for learning", ["Face-to-Face Classroom settings", "Online (E-Learning)", "Hybrid Model"])
 
     # Highest level of education
     education = st.selectbox("Tell us your highest level of education:", ["High School or Below", "Some College/Associate Degree", "Bachelor's Degree", "Master's Degree or Higher"])
@@ -298,6 +299,7 @@ def questionnaire():
             "Overall experience rating": overall_experience,
             "Comfort level rating": comfort_level,
             "Accuracy rating": accuracy,
+            "Prefered learning Mode": learningPreference,
             "Recognized emotions": recognized_emotions,
             "Misinterpreted emotions": misinterpreted_emotions,
             "Technical issues": technical_issues,
