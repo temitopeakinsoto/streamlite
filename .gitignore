@@ -1,0 +1,5 @@
+database/
+questionnaire_data.csv
+consent_data.csv
+facial_data.csv
+.DS_Store
