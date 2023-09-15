@@ -250,10 +250,10 @@ def questionnaire():
     """)
 
     # Age
-    age = st.selectbox("Please tell us your age:", ["", "18-24", "25-34", "35-44", "45-54", "55 and above"])
+    age = st.selectbox("Please tell us your age:", ["18-24", "25-34", "35-44", "45-54", "55 and above"])
 
     # Gender
-    gender = st.selectbox("Please tell us your gender:", ["", "Male", "Female", "Non-binary/Other", "Prefer not to say"])
+    gender = st.selectbox("Please tell us your gender:", ["Male", "Female", "Non-binary/Other", "Prefer not to say"])
 
     # Ethnicity/Race
     ethnicity = st.selectbox("What is your Ethnicity/Race:", ["English", "Welsh", "Scottish", "Northern Irish" , "British Irish","Indian", "Indian British", "Chinese", "Chinese British", "Any other Asian", "Caribbean","African", "Black British", "Any other Black", "Asian", "Others"])
