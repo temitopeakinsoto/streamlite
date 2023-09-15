@@ -401,7 +401,7 @@ def apppage():
         
         
         df = pd.DataFrame(data)
-        df.to_csv('emotion_data.csv', index=False)
+        df.to_csv('./database/emotion_data.csv', index=False)
 
         cv2.putText(resized_frame, txt, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
 
@@ -448,7 +448,7 @@ def apppage():
 
     if not analysis_checkbox:
         # Read emotion and timestamp data from the CSV file
-        df = pd.read_csv('emotion_data.csv')
+        df = pd.read_csv('./database/emotion_data.csv')
         emotion_timestamps = df['Timestamp'].tolist()
         emotion_values = df['Emotion'].tolist()
 
