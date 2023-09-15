@@ -275,7 +275,7 @@ def questionnaire():
         issue_details = st.text_input("If yes, please specify.")
 
     feedback_timeliness = st.radio("Did the system provide timely and relevant feedback to your emotional state based on your facial expression during the session? (YES/NO)", ["YES", "NO"])
-
+    date = st.date_input("Date:")
     # Submit button
     if st.button("Submit"):
         if not age or not gender:
@@ -302,7 +302,8 @@ def questionnaire():
             "Misinterpreted emotions": misinterpreted_emotions,
             "Technical issues": technical_issues,
             "Technical issue details": issue_details if technical_issues == "YES" else "",
-            "Feedback timeliness": feedback_timeliness
+            "Feedback timeliness": feedback_timeliness,
+            "Date": date
         }
 
         # Append the response data to the list
