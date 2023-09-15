@@ -4,8 +4,8 @@ import csv
 def convertQuestionnaireDataToCSV():
 
     # Specify the input JSON file and output CSV file
-    json_file = './database/questionnaire_data.json'
-    csv_file = 'questionnaire_data.csv'
+    json_file = '../database/questionnaire_data.json'
+    csv_file = '../database/questionnaire_data.csv'
 
     # Load JSON data from the input file
     with open(json_file, 'r') as infile:
@@ -31,8 +31,8 @@ def convertQuestionnaireDataToCSV():
 
 def convertFacialDataToCSV():
     # Specify the input JSON file and output CSV file
-    json_file = './database/facial_data.json'
-    csv_file = 'facial_data.csv'
+    json_file = '../database/facial_data.json'
+    csv_file = '../database/facial_data.csv'
 
     # Load JSON data from the input file
     with open(json_file, 'r') as infile:
@@ -57,8 +57,8 @@ def convertFacialDataToCSV():
 
 def convertConsentDataToCSV():
     # Specify the input JSON file and output CSV file
-    json_file = './database/consent_data.json'
-    csv_file = 'consent_data.csv'
+    json_file = '../database/consent_data.json'
+    csv_file = '../database/consent_data.csv'
 
     # Load JSON data from the input file
     with open(json_file, 'r') as infile:
