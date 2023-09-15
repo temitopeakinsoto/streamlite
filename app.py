@@ -7,13 +7,12 @@ from pytube import YouTube
 import pandas as pd
 from datetime import datetime
 import matplotlib.pyplot as plt
-# import pygwalker as pyg
 import json
 import uuid
 
 # Create a sidebar with navigation links
 st.sidebar.title("Navigation")
-page_selection = st.sidebar.radio("", ["Participant Information", "Consent Form", "App Page", "Questionnaire" ])
+page_selection = st.sidebar.radio("", ["Participant Information", "Consent Form", "App Page", "Questionnaire", "Visual Display" ])
 
 consent_data_list = []
 questionnaire_data_list = []
@@ -100,8 +99,6 @@ def consent():
                 "I have been told that I may at some time in the future be contacted again in connection with this or another study.": future_contact
             },
             "Date": str(date),
-            "Signature of Principal Investigator": pi_signature,
-            "Name of Principal Investigator": pi_name,
             "Contact Information of Principal Investigator": "TEMITOPE SAMSON AKINSOTO"
         }
 
@@ -475,3 +472,5 @@ elif page_selection == "Questionnaire":
     questionnaire()
 elif page_selection == "App Page":
     apppage()
+elif page_selection == "Visual Display":
+    display()
