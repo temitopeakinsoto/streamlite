@@ -17,8 +17,11 @@ page_selection = st.sidebar.radio("", ["Participant Information", "Consent Form"
 
 consent_data_list = []
 questionnaire_data_list = []
+facial_data_list = []
+
 questionnaire_data = './database/questionnaire_data.json'
 consent_data = './database/consent_data.json'
+facial_data = './database/facial_data.json'
 unique_id = str(uuid.uuid4())
 
 if 'session_state' not in st.session_state:
@@ -33,7 +36,7 @@ def consent():
 
     # Participant Information
     st.header("Participant Information")
-    name = st.text_input("Full Name ")
+    # name = st.text_input("Full Name ")
     contact_details = st.text_input("Contact Details (postal or email address):")
 
     # Study Information
@@ -57,14 +60,13 @@ def consent():
     future_contact = st.checkbox("I have been told that I may at some time in the future be contacted again in connection with this or another study.")
 
     # Signature
-    st.header("Signature")
-    participant_signature = st.text_input("Signature of Participant:")
+    name = st.text_input("Please Enter Your Full Name ")
     date = st.date_input("Date:")
 
     # Principal Investigator Information
     st.header("Principal Investigator Information")
-    pi_signature = st.text_input("Signature of Principal Investigator:")
-    pi_name = st.text_input("Name of Principal Investigator (BLOCK CAPITALS):")
+    # pi_signature = st.text_input("Signature of Principal Investigator:")
+    # pi_name = st.text_input("Name of Principal Investigator (BLOCK CAPITALS):")
 
     # Display the PI's contact information
     st.text("Contact Information of Principal Investigator:")
@@ -78,9 +80,6 @@ def consent():
             st.warning("Full Name and Contact Details are required.")
             return
         
-        if not participant_signature or not date:
-            st.warning("Participant signature and date fields are required.")
-            return
 
         # Check if at least one consent question is selected
         if not all([consent_given, withdraw, recording, data_handling, medical_advice, unlawful_activity, future_contact]):
@@ -100,7 +99,6 @@ def consent():
                 "I understand that if there is any revelation of unlawful activity or any indication of non-medical circumstances that would or has put others at risk, the University may refer the matter to the appropriate authorities.": unlawful_activity,
                 "I have been told that I may at some time in the future be contacted again in connection with this or another study.": future_contact
             },
-            "Signature of Participant": participant_signature,
             "Date": str(date),
             "Signature of Principal Investigator": pi_signature,
             "Name of Principal Investigator": pi_name,
@@ -336,6 +334,8 @@ def questionnaire():
 
 
 def apppage():
+
+    global facial_data_list
     st.title("Real-time Emotion Analysis")
     st.write("This is the App Page content.")
 
@@ -371,6 +371,9 @@ def apppage():
         # Read a frame from the webcam
         ret, frame = video_capture.read()
 
+        if not ret:
+            break 
+
         # Resize the frame by the specified scaling factor
         height, width = frame.shape[:2]
         new_width = int(width * scaling_factor)
@@ -396,7 +399,9 @@ def apppage():
 
         emotion_timestamps.append(timestamp)
         emotion_values.append(emotion)
-        data = {'Timestamp': emotion_timestamps, 'Emotion': emotion_values}
+        data = {'Timestamp': emotion_timestamps, 'Emotion': emotion_values, 'ID': st.session_state.session_state['unique_id']}
+        
+        
         df = pd.DataFrame(data)
         df.to_csv('emotion_data.csv', index=False)
 
@@ -404,6 +409,32 @@ def apppage():
 
         # Display the frame with emotion using Streamlit in the empty space
         video_display.image(resized_frame, channels="BGR", use_column_width=True)
+
+
+        # SAVE DATA TO DB
+        face_expression_data = {
+            'ID': st.session_state.session_state['unique_id'],
+            'Timestamp': emotion_timestamps, 
+            'Emotion': emotion_values
+        }
+        facial_data_list.append(face_expression_data)
+        # Load existing data from the JSON file (if any)
+        if os.path.exists(facial_data):
+            with open(facial_data, 'r') as json_file:
+                facial_data_list = json.load(json_file)
+        else:
+            facial_data_list = []
+
+
+        try:
+            facial_data_list.append(face_expression_data)
+        except Exception as e:
+            str_msg = str(e)
+            print('Error Message: ', str_msg)
+
+        # Save the updated data back to the JSON file
+        with open(facial_data, 'w') as json_file:
+            json.dump(facial_data_list, json_file, indent=4)
 
     # Release the webcam when the checkbox is unchecked
     if not analysis_checkbox:
