@@ -12,7 +12,7 @@ import uuid
 
 # Create a sidebar with navigation links
 st.sidebar.title("Navigation")
-page_selection = st.sidebar.radio("", ["Participant Information", "Consent Form", "App Page", "Questionnaire", "Visual Display" ])
+page_selection = st.sidebar.radio("", ["Participant Information", "Consent Form", "App Page", "Questionnaire" ])
 
 consent_data_list = []
 questionnaire_data_list = []
@@ -64,8 +64,6 @@ def consent():
 
     # Principal Investigator Information
     st.header("Principal Investigator Information")
-    # pi_signature = st.text_input("Signature of Principal Investigator:")
-    # pi_name = st.text_input("Name of Principal Investigator (BLOCK CAPITALS):")
 
     # Display the PI's contact information
     st.text("Contact Information of Principal Investigator:")
@@ -472,5 +470,3 @@ elif page_selection == "Questionnaire":
     questionnaire()
 elif page_selection == "App Page":
     apppage()
-elif page_selection == "Visual Display":
-    display()
