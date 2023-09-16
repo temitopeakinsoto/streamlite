@@ -284,6 +284,7 @@ def participant():
     AL10  9AB
     Thank you very much for reading this information and giving consideration to taking part in this study.
     """)
+    st.info("Proceed to Consent Form Page in the Navigation Menu to continue")
 
 
 def questionnaire():
@@ -309,7 +310,7 @@ def questionnaire():
     gender = st.selectbox("**Please tell us your gender:**", ["Male", "Female", "Non-binary/Other", "Prefer not to say"])
 
     # Ethnicity/Race
-    ethnicity = st.selectbox("**What is your Ethnicity/Race:**", ["English", "Welsh", "Scottish", "Northern Irish" , "British Irish","Indian", "Indian British", "Chinese", "Chinese British", "Any other Asian", "Caribbean","African", "Black British", "Any other Black", "Asian", "Others"])
+    ethnicity = st.selectbox("**What is your Ethnicity/Race:**", ["English", "Welsh", "Scottish", "Northern Irish" , "British Irish", "Indian", "Indian British", "Chinese", "Chinese British", "Any other Asian", "Caribbean", "Black African", "Black British", "Any other Black", "Asian", "Others"])
 
     # Frequency of e-learning activities
     frequency = st.selectbox("**How often do you engage in e-learning activities via online platforms?**", ["Never", "Daily", "Weekly", "Monthly", "Rarely", "Never"])
@@ -324,8 +325,8 @@ def questionnaire():
     overall_experience = st.slider("**On a scale of 1 - 10 (10 Being the highest), how would you rate your overall experience with using the emotion recognition app?**", 1, 10)
     comfort_level = st.slider("**On a scale of 1 - 10 (10 Being the highest), How comfortable were you using the emotion recognition system during the session?**", 1, 10)
     accuracy = st.slider("**On a scale of 1-10 (10 Being the highest), How accurately did the system detect your emotional state/facial expressions?**", 1, 10)
-    recognized_emotions = st.text_input("**Which emotions/facial expressions do you feel were accurately recognized by the system? (Happy, Sad, Angry, Confused, etc.)**")
-    misinterpreted_emotions = st.text_input("**Were there any emotions/facial expressions that the system misinterpreted? If yes, please specify.**")
+    recognized_emotions = st.selectbox("**Which emotions/facial expressions do you feel were accurately recognized by the system? (Happy, Sad, Angry, Confused, etc.)**", ["None", "Happy", "Sad", "Angry", "Confused", "Suprised"])
+    misinterpreted_emotions = st.selectbox("**Were there any emotions/facial expressions that the system misinterpreted? If yes, please specify.**", ["None", "Happy", "Sad", "Angry", "Confused", "Suprised"])
     technical_issues = st.radio("**Were there any technical issues or challenges while using the emotion recognition app? (YES/NO)**", ["YES", "NO"])
     if technical_issues == "YES":
         issue_details = st.text_input("**If yes, please specify.")
@@ -529,6 +530,10 @@ def apppage():
 
         # Display the Matplotlib figure using Streamlit
         st.pyplot(fig)
+
+    st.write("")
+    st.write("")
+    st.info("Proceed to Questionnaire Page in the Navigation Menu to continue")
         
 
 # Call the selected page function
