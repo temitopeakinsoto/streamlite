@@ -9,6 +9,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import json
 import uuid
+logo = './images/logo.png'
 
 # Create a sidebar with navigation links
 st.sidebar.title("Navigation")
@@ -31,6 +32,7 @@ def consent():
     global consent_data_list
     global consent_data
     # Title
+    st.image(logo, caption="", use_column_width=False)
     st.title("Consent Form for Study Participation")
 
     # Participant Information
@@ -126,6 +128,7 @@ def consent():
 def participant():
 
     # Title and Introduction
+    st.image(logo, caption="", use_column_width=False)
     st.title("Participant Information Sheet")
     st.header("University of Hertfordshire")
     st.subheader("Ethics Committee for Studies Involving the Use of Human Participants")
@@ -236,7 +239,9 @@ def participant():
 
 
 def questionnaire():
+
     global questionnaire_data_list
+    st.image(logo, caption="", use_column_width=False)
     st.title("University of Hertfordshire - Ethics Approval Study")
     st.title("QUESTIONNAIRE")
 
