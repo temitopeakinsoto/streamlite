@@ -305,7 +305,7 @@ def questionnaire():
             "Technical issues": technical_issues,
             "Technical issue details": issue_details if technical_issues == "YES" else "",
             "Feedback timeliness": feedback_timeliness,
-            "Date": date
+            "Date": str(date)
         }
 
         # Append the response data to the list
@@ -335,7 +335,6 @@ def apppage():
 
     global facial_data_list
     st.title("Real-time Emotion Analysis")
-    st.write("This is the App Page content.")
 
     # Use 0 for the default webcam
     video_capture = cv2.VideoCapture(0)
