@@ -340,9 +340,7 @@ def apppage():
 
     global facial_data_list
     st.title("Real-time Emotion Analysis Page")
-    st.markdown("""
-    ## Welcome to this emotion recognition app. Below are the steps you need to follow to complete this testing
-    """)
+    st.write("**Welcome to this emotion recognition app. In this test session,  a 2-minute video eliciting different facial expressions will be watched, with facial expression data being collected and analysed by an emotion recognition system. Below are the steps you need to follow to complete this testing**")
     st.write("1. Click the play button on the youtube video")
     st.write("2. Click the START ANALYSIS checkbox to START the image streaming process")
     st.write("3. Click the START ANALYSIS checkbox again to STOP the image streaming process")
