@@ -319,7 +319,7 @@ def questionnaire():
     # Highest level of education
     education = st.selectbox("**Tell us your highest level of education:**", ["High School or Below", "Some College/Associate Degree", "Bachelor's Degree", "Master's Degree or Higher"])
     st.image(getData()[1])
-    agree = st.radio("**According to our app, your emotion in the image above is: **"+getData()[0] + " Do you agree", ["YES", "NO"])
+    agree = st.radio("According to our app, your emotion in the image above is: ** "+getData()[0] + " ** Do you agree?", ["YES", "NO"])
     
     # Ratings and feedback
     overall_experience = st.slider("**On a scale of 1 - 10 (10 Being the highest), how would you rate your overall experience with using the emotion recognition app?**", 1, 10)
@@ -361,6 +361,7 @@ def questionnaire():
             "Technical issues": technical_issues,
             "Technical issue details": issue_details if technical_issues == "YES" else "",
             "Feedback timeliness": feedback_timeliness,
+            "Accuracy of system": accuracy,
             "Date": str(date)
         }
 
