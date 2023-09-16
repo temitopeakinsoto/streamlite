@@ -334,7 +334,22 @@ def questionnaire():
 def apppage():
 
     global facial_data_list
-    st.title("Real-time Emotion Analysis")
+    st.title("Real-time Emotion Analysis Page")
+    st.markdown("""
+    ## Welcome to this emotion recognition app. Below are the steps you need to follow to complete this testing
+    """)
+    st.write("1. Click the play button on the youtube video")
+    st.write("2. Click the START ANALYSIS checkbox to START the image streaming process")
+    st.write("3. Click the START ANALYSIS checkbox again to STOP the image streaming process")
+    st.write("4. Exit the page and proceed to the questionnaire form on the navigation panel")
+    st.write("Thank you :)")
+
+    st.markdown("""
+    
+    """)
+    st.markdown("""
+    
+    """)
 
     # Use 0 for the default webcam
     video_capture = cv2.VideoCapture(0)
