@@ -82,6 +82,7 @@ def consent():
     # Title
     st.image(logo, caption="", use_column_width=False)
     st.title("Consent Form for Study Participation")
+    st.subheader("HEALTH, SCIENCE, ENGINEERING AND TECHNOLOGY ECDA")
 
     # Participant Information
     st.header("Participant Information")
@@ -177,9 +178,12 @@ def participant():
 
     # Title and Introduction
     st.image(logo, caption="", use_column_width=False)
-    st.title("Participant Information Sheet")
-    st.header("University of Hertfordshire")
     st.subheader("Ethics Committee for Studies Involving the Use of Human Participants")
+    st.subheader("HEALTH, SCIENCE, ENGINEERING AND TECHNOLOGY ECDA")
+    st.write("")
+    st.write("")
+
+    st.title("Participant Information Sheet")
 
     st.markdown("""
     ## 1. Title of Study
@@ -262,7 +266,7 @@ def participant():
     ## 14. Who Has Reviewed This Study?
     This study has been reviewed by:
     - The University of Hertfordshire Health, Science, Engineering, and Technology Ethics Committee with Delegated Authority
-    - The UH protocol number is <enter>
+    - The UH protocol number is (SPECS/PGT/UH/05457)
     """)
 
     # Factors That Might Put Others at Risk
@@ -292,6 +296,10 @@ def questionnaire():
     global questionnaire_data_list
     st.image(logo, caption="", use_column_width=False)
     st.title("University of Hertfordshire - Ethics Approval Study")
+    st.subheader("HEALTH, SCIENCE, ENGINEERING AND TECHNOLOGY ECDA")
+    st.write("The UH protocol number: SPECS/PGT/UH/05457")
+    st.write("")
+    st.write("")
     st.title("QUESTIONNAIRE")
 
     # Introduction
