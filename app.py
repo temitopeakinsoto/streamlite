@@ -432,9 +432,6 @@ def apppage():
     # Define a scaling factor for the webcam stream
     scaling_factor = 0.5  # You can adjust this as needed
 
-    # YouTube video URL
-    youtube_url = "https://www.youtube.com/shorts/KzeFa_knP5E?feature=share"
-
    # Path to locally saved video
     video_path = "./vid.mp4"  
 
