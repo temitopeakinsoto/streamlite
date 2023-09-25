@@ -435,12 +435,8 @@ def apppage():
     # YouTube video URL
     youtube_url = "https://www.youtube.com/shorts/KzeFa_knP5E?feature=share"
 
-    # Download the YouTube video (if not already downloaded)
-    video_path = "./vid.mp4"  # Local path to save the video
-    if not os.path.exists(video_path):
-        st.write("Downloading the YouTube video... (This may take a moment)")
-        yt = YouTube(youtube_url)
-        yt.streams.filter(file_extension="mp4", progressive=True).order_by("resolution").desc().first().download(filename="youtube_video")
+   # Path to locally saved video
+    video_path = "./vid.mp4"  
 
     while analysis_checkbox:
         # Read a frame from the webcam
