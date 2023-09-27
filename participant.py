@@ -2,7 +2,7 @@ import streamlit as st
 
 
 logo = './images/logo.png'
-
+ 
 def participant():
 
     # Title and Introduction
